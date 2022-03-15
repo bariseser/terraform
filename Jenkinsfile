@@ -16,12 +16,16 @@ pipeline {
             }
         }
 
-        stage('Terraform')
+        stage('Deployment Process')
         {
-            steps
-            {
-                sh "terraform init"
-                sh "terraform plan"
+            steps {
+                sh "export AWS_DEFAULT_REGION=eu-west-1"
+                sh "wget -N -c https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh"
+                sh "chmod 755 install.sh"
+                sh "./install.sh -b .bin"
+                sh ".bin/tfswitch -b .bin/terraform 1.0.0"
+                sh '.bin/terraform init'
+                sh '.bin/terraform plan'
             }
         }
     }
