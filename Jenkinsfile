@@ -12,6 +12,7 @@ pipeline {
             steps 
             {
                 cleanWs()
+                sh "git clone git@github.com:bariseser/terraform.git"
             }
         }
     }
