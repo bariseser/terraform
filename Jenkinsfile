@@ -15,5 +15,11 @@ pipeline {
                 sh "git clone https://github.com/bariseser/terraform.git"
             }
         }
+
+        stage('Terraform')
+        {
+            sh "terraform init"
+            sh "terraform plan"
+        }
     }
 }
