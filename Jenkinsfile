@@ -2,6 +2,17 @@ pipeline {
     agent any
 
     options {
-        skipDefault
-    }   
+        skipDefaultCheckout(true)
+    }
+
+    stages
+    {
+        stage('Clean Ws')
+        {
+            steps 
+            {
+                cleanWs()
+            }
+        }
+    }
 }
