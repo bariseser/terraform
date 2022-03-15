@@ -12,7 +12,7 @@ pipeline {
             steps 
             {
                 cleanWs()
-                sh "git clone git@github.com:bariseser/terraform.git"
+                sh "git clone https://github.com/bariseser/terraform.git"
             }
         }
     }
